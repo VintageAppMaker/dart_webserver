@@ -15,13 +15,13 @@ class Service {
     router.get('/', (Request request) async {
       await Future.delayed(Duration(milliseconds: 400));
       
-      var b = BasicPacket("success","this site for only mobile API." , "");
+      var b = resultPacket("success","this site for only mobile API." , "");
       return Response.ok(jsonEncode(b));
     });
 
     // GET : 경로명 처리
     router.get('/<req>', (Request request, String req) {
-      var b = BasicPacket("fail","your request $req not allowed." , "");
+      var b = resultPacket("fail","your request $req not allowed." , "");
       return Response.ok(jsonEncode(b));
     });
 
@@ -32,7 +32,7 @@ class Service {
 
     // 요청을 찾지 못했을 경우
     router.all('/<ignored|.*>', (Request request) {
-      var b = BasicPacket("fail","request not found." , "");
+      var b = resultPacket("fail","request not found." , "");
       return Response.notFound(jsonEncode(b));
     });
 

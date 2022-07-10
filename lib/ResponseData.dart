@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-class BasicPacket{
+class resultPacket{
   String result;
   String msg;
   String data; // 요청에 대한 다양한 Json packet
   
-  BasicPacket(this.result, this.msg, this.data);
+  resultPacket(this.result, this.msg, this.data);
 
   // jsonencode()를 사용할 경우, 반드시 필요한 Function
   Map toJson() => {
@@ -13,6 +13,11 @@ class BasicPacket{
         'msg': msg,
         'data': data
   };
+
+  resultPacket.fromJson(Map<String, dynamic> json)
+      : result = json['result'],
+        msg = json['msg'], 
+        data = json['data'];
 }
 
 // 로그인 정보, 클라이언트에 전달
@@ -27,7 +32,7 @@ class DataLogin{
   Map toJson() => {
         'user': user,
         'passwd': passwd, 
-        'msg' : level 
+        'level' : level 
   };
 }
 

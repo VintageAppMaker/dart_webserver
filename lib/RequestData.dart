@@ -14,6 +14,13 @@ class ReqRegisterPacket{
       : user = json['user'],
         passwd = json['passwd'], 
         level = json['level'];
+
+  // jsonencode()를 사용할 경우, 반드시 필요한 Function
+  Map toJson() => {
+        'user': user,
+        'passwd': passwd, 
+        'level' : level 
+  };      
 }
 
 // 로그인
@@ -28,6 +35,12 @@ class ReqLoginPacket{
   ReqLoginPacket.fromJson(Map<String, dynamic> json)
       : user = json['user'],
         passwd = json['passwd'];
+
+  // jsonencode()를 사용할 경우, 반드시 필요한 Function
+  Map toJson() => {
+        'user': user,
+        'passwd': passwd
+  };      
 }
 
 

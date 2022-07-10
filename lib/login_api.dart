@@ -22,15 +22,15 @@ class loginApi {
         var d = ReqRegisterPacket.fromJson(p);
         
         // 실패했을 경우, 응답.
-        var res = jsonEncode(BasicPacket("success", "user is not registed(already registed).", "{}"));
+        var res = jsonEncode(resultPacket("success", "user is not registed(already registed).", "{}"));
 
         if (!DB.isExistData(d.user)){
           // 사용자 추가 
           var newItem = DataLogin(d.user, d.passwd, d.level);
           DB.add(newItem);
 
-          // 응답처리
-          res = jsonEncode(BasicPacket("success", "ok", "${newItem.toJson()}"));
+          // 응답처리 (data에 json 정보전달)
+          res = jsonEncode(resultPacket("success", "ok", "${jsonEncode(newItem)}"));
           return Response.ok(res);
         }  
 
@@ -51,13 +51,13 @@ class loginApi {
         var d = ReqLoginPacket.fromJson(p);
         
         // 실패했을 경우, 응답.
-        var res = jsonEncode(BasicPacket("success", "user is not found.", "{}"));
+        var res = jsonEncode(resultPacket("success", "user is not found.", "{}"));
 
         if (DB.isExistData(d.user)){
           
           // 응답처리
           if (DB.isPasswdOkByUser(d.user, d.passwd)){
-            res = jsonEncode(BasicPacket("success", "login ok", "{}"));
+            res = jsonEncode(resultPacket("success", "login ok", "{}"));
             return Response.ok(res); 
           }
 
