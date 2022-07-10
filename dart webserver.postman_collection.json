@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "cdf1c6b6-fa12-4912-9ce4-06f703e58ef7",
+		"name": "dart webserver",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "simple message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register by json( post )",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"user1\",\"passwd\":\"1231\", \"level\" : 100}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/loginapi/reg/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"loginapi",
+						"reg",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login by json( post )",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user\":\"user1\",\"passwd\":\"1231\"}"
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/loginapi/login/",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"loginapi",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
